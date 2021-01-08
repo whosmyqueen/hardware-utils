@@ -49,7 +49,7 @@ publishing.publications {
          * Translates "_" in flavor names to "-" for artifactIds, because "-" in flavor name is an
          * illegal character, but is well used in artifactId names.
          */
-        def variantArtifactId = flavored ? aarId + "-" + variant.flavorName.replace('_', '-') : project.name
+        def variantArtifactId = flavored ? aarId + "-" + variant.flavorName.replace('_', '-') : aarId
 
         /**
          * If the javadoc destinationDir wasn't changed per flavor, the libraryVariants would
@@ -151,7 +151,7 @@ afterEvaluate {
         override = true
         pkg {
             repo = 'maven'
-            name = project.name
+            name = aarId
             desc = libraryDesc
             publish = true // 是否是公开项目。
             websiteUrl = siteUrl
